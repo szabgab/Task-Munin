@@ -47,5 +47,20 @@ WriteMakefile(
 		'Net::IP'                      => '0',
 		'XML::LibXML'                  => '0',
 	},
+	META_MERGE => {
+		'meta-spec' => { version => 2 },
+		resources => {
+			repository => {
+				type       => 'git',
+				url        => 'http://github.com/szabgab/Task-Munin.git',
+				web        => 'http://github.com/szabgab/Task-Munin',
+				license    => 'http://dev.perl.org/licenses/',
+			},
+			bugtracker => {
+				web        => 'http://github.com/szabgab/Task-Munin/issues',
+			},
+		},
+	},
+
 	dist  => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },
 );
