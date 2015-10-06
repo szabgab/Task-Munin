@@ -20,5 +20,13 @@ L<Gabor Szabo|http://szabgab.com/>
 =cut
 
 
+sub get_prereqs {
+	open my $fh, '<', 'modules.txt' or die 'Could not open modules.txt';
+	my @modules = <$fh>;
+	close $fh;
+	chomp @modules;
+	return { map { split /\s*=\s*/ } @modules };
+}
+
 1;
 

@@ -1,9 +1,16 @@
 use strict;
 use warnings;
 
-use Test::Simple tests => 1;
+use lib 'lib';
 
-use HTML::Template::Pro;
+use Test::More;
+use Task::Munin ();
+my $prereqs =  Task::Munin::get_prereqs();
 
-ok(1);
+plan tests => scalar(keys %$prereqs) - 1;
+foreach my $module (sort keys %$prereqs) {
+	next if $module eq 'perl';
+	eval "use $module"; # $prereqs-{$module}";
+	is $@, '';
+}
 
